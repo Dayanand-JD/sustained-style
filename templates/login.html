@@ -1,0 +1,24 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome to login</title>
+	<link rel="stylesheet" href={{ url_for('static', filename='css/login.css') }} />
+</head>
+<body style="background-color:powderblue;">
+<p> {{error}} </p>
+<form action="/login" method="POST">
+	<div id="main-wrapper" style="background-color: #ffebef;">
+		<div class="imgcontainer" >
+			<img src= {{ url_for('static', filename='images/logo.png') }} alt="Logo" class="avatar">
+		</div>
+		<div class="inner_container">
+	<p>Email: <input type="text" name="email"></p>
+	<p>Password: <input type="password" name="password"></p>
+	<p><input type="submit"></p>
+	<a href="/registerationForm">Register here</a>
+</div>
+</form>
+</div>
+</body>
+</html>

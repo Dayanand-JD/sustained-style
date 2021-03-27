@@ -1,0 +1,515 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Product Description</title>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+	</style>
+<link rel="stylesheet" href={{url_for('static', filename='css/productDescription.css')}} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css')}} />
+</head>
+<body style=" background-color: #f4dada;">
+<div id="title">
+	<a href="/">
+		<img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+	</a>
+	<form>
+		<input id="searchBox" type="text" name="searchQuery">
+		<input id="searchButton" type="submit" value="Search">
+	</form>
+
+	{% if not loggedIn %}
+	<div id="signInButton">
+		<a class="link" href="/loginForm">Sign In</a>
+	</div>
+	{% else %}
+	<div class="dropdown">
+		<button class="dropbtn">Hello, <br>{{firstName}}</button>
+		<div class="dropdown-content">
+			<a href="/account/orders">Your orders</a>
+			<a href="/account/profile">Your profile</a>
+			<hr>
+			<a href="/logout">Sign Out</a>
+		</div>
+	</div>
+	{% endif %}
+	<div id="kart">
+		<a class="link" href="/cart">
+			<img src={{url_for('static', filename='images/shoppingCart.png')}} id="cartIcon" />
+			CART {{noOfItems}}
+		</a>
+	</div>
+</div>
+<div id="display">
+	<div id="productName">
+		<h1>{{data[1]}}</h1>
+	</div>
+	<div>
+		<img src={{url_for('static', filename='uploads/'+data[4]) }} id="productImage"/>
+	</div>
+
+	<div id="productDescription">
+		<h2>Details</h2>
+		<table id="descriptionTable">
+			<tr>
+				<td>Name</td>
+				<td>{{data[1]}}</td>
+			</tr>
+			<tr>
+				<td>Price</td>
+				<td>${{data[2]}}</td>
+			</tr>
+			<tr>
+				<td>Stock</td>
+				<td>{{data[5]}}</td>
+			</tr>
+		</table>
+		<h2>Description</h2>
+		<p>{{data[3]}}</p>
+	</div>
+	<div id="addToCart">
+		<a href="/addToCart?productId={{request.args.get('productId')}}">Add to Cart</a>
+	</div>
+</div>
+<!--banner section	-->
+<div class="banner-section">
+	<div class="continer">
+	
+		<div class="banner-inner">
+			<H1>WHAT SETS US APART?  </i></H1>
+			<div class="banner-box">
+				<div class="features-icon">
+					<img  src= {{ url_for('static', filename='images/1.png') }} />
+					
+				</div>
+				<h1>Labour Love</h1>
+				<p>All of our in-house dressmakers are paid above minimum wage and receive comprehensive employee benefits!</p>
+			</div>
+			<div class="banner-box">
+				<div class="features-icon">
+					<img  src= {{ url_for('static', filename='images/2.png') }} />
+					
+				</div>
+				<h1>Environmental Commitment</h1>
+				<p>We use reclaimed (recycled water) in our manufacturing plants.</p>
+			</div>
+			<div class="banner-box">
+				<div class="features-icon">
+					<img  src= {{ url_for('static', filename='images/3.png') }} />
+					
+				</div>
+				<h1>Global Engagement</h1>
+				<P>10% of our total sales go towards NGOs that focus on fighting climate change!</P>
+			</div>
+			
+	
+		   
+		</div>
+
+	</div>
+	<style> 
+		
+
+	
+	
+		.banner-section
+{
+	width:100%;
+	padding:10px 0px;
+
+ 
+	font-family: 'Reenie Beanie', cursive;
+	
+
+}
+
+
+.banner-inner
+{
+	display: flex;
+	padding: 40px 0px;
+	background-color: #f3f2db;
+
+	font-family: 'Reenie Beanie', cursive;
+ 
+}
+
+.banner-box
+{
+	flex:0 0 25%;
+	
+	text-align: center;
+	border-right: 1px solid #9e9e9e;
+
+ 
+	font-family: 'Reenie Beanie', cursive;
+	font-size: x-large;
+ 
+}
+
+.banner-icon
+	{
+		margin-bottom: 10px;
+		
+	}
+	
+	.banner-icon img
+	{
+		width:40px;
+		height: auto;
+	}
+
+
+
+.banner-box h1
+{
+	
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.banner-box p
+{
+	columns: #000000;;
+	
+}
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+	</style>
+
+
+
+</div>	
+
+<footer class="footer-distributed">
+
+<div class="footer-left">
+
+	<img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+
+	<p class="footer-links">
+		<a href="#" class="link-1">Home</a>
+		
+		<a href="#">Blog</a>
+	
+	
+	
+		
+		
+		<a href="#">Contact</a>
+	</p>
+
+	<p class="footer-company-name">sustanatied style © 2020</p>
+</div>
+
+<div class="footer-center">
+
+	<div>
+	
+		<p><span>729 misksin street</span> Cardiff, UK</p>
+	</div>
+
+	<div>
+	
+		<p>+44.555.555.5555</p>
+	</div>
+
+	<div>
+	
+		<p><a href="mailto:support@sustanatiedstyle.com">support@sustanatiedstyle.com</a></p>
+	</div>
+
+</div>
+
+<div class="footer-right">
+
+	<p class="footer-company-about">
+		<span>About the company</span>
+		Sustained Style is an environmentally friendly fashion brand and retailer that aims to create beautiful and durable clothing out of old, recycled clothing.
+	</p>
+
+
+
+</div>
+<style>
+	.footer-distributed{
+background: #b9e7e2;
+box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+box-sizing: border-box;
+width: 100%;
+text-align: left;
+font: bold 16px sans-serif;
+padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+display: inline-block;
+vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+color:  #ffffff;
+font: normal 36px 'Open Sans', cursive;
+margin: 0;
+}
+
+.footer-distributed h3 span{
+color:  lightseagreen;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+color:  #ffffff;
+margin: 20px 0 12px;
+padding: 0;
+}
+
+.footer-distributed .footer-links a{
+display:inline-block;
+line-height: 1.8;
+font-weight:400;
+text-decoration: none;
+color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+color:  #222;
+font-size: 14px;
+font-weight: normal;
+margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+width: 35%;
+}
+
+.footer-distributed .footer-center i{
+background-color:  #33383b;
+color: #ffffff;
+font-size: 25px;
+width: 38px;
+height: 38px;
+border-radius: 50%;
+text-align: center;
+line-height: 42px;
+margin: 10px 15px;
+vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+font-size: 17px;
+line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+display: inline-block;
+color: #ffffff;
+font-weight:400;
+vertical-align: middle;
+margin:0;
+}
+
+.footer-distributed .footer-center p span{
+display:block;
+font-weight: normal;
+font-size:14px;
+line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+color:  lightseagreen;
+text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+content: "|";
+font-weight:300;
+font-size: 20px;
+left: 0;
+color: #fff;
+display: inline-block;
+padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+line-height: 20px;
+color:  #92999f;
+font-size: 13px;
+font-weight: normal;
+margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+display: block;
+color:  #ffffff;
+font-size: 14px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+display: inline-block;
+width: 35px;
+height: 35px;
+cursor: pointer;
+background-color:  #33383b;
+border-radius: 2px;
+
+font-size: 20px;
+color: #ffffff;
+text-align: center;
+line-height: 35px;
+
+margin-right: 3px;
+margin-bottom: 5px;
+}
+
+
+</style>
+<div class="features-section">
+	<div class="container"> <!--Already define in css-->
+		<div class="features-inner">
+		
+			<div class="features-box">
+				<div class="features-icon">
+					<img  src= {{ url_for('static', filename='images/shipped.png') }} />
+					
+				</div>
+				<h1>Free Delivery</h1>
+				<p>Free shipping on all orders.</p>
+			</div>
+		
+		
+			<div class="features-box">
+				<div class="features-icon">
+					<img src= {{ url_for('static', filename='images/return-to-the-past.png') }} />
+				</div>
+				<h1>Return Policy</h1>
+				<p>Free shipping on all orders.</p>
+			</div>
+			
+			
+			<div class="features-box">
+				<div class="features-icon">
+					<img src= {{ url_for('static', filename='images/support.png') }} />
+					
+				</div>
+				<h1>24/7 Support</h1>
+				<p>Free shipping on all orders.</p>
+			</div>
+			
+			
+			<div class="features-box">
+				<div class="features-icon">
+					<img  src= {{ url_for('static', filename='images/credit-card.png') }} />
+				
+				</div>
+				<h1>Secure Payment</h1>
+				<p>Free shipping on all orders.</p>
+			</div>
+		
+		
+		
+		
+		
+		</div>
+	
+	</div>
+	<style>
+		.features-section
+{
+	width:100%;
+	
+}
+ 
+
+.features-inner
+{
+	display: flex;
+	padding: 10px 0px;
+	background-color: #eeeddd;
+	box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+}
+
+.features-box
+{
+	flex:0 0 25%;
+	max-width: 25%;
+	text-align: center;
+	border-right: 1px solid #9e9e9e;
+}
+
+.features-box:nth-child(4)
+{
+	border-right: none;
+}
+.features-icon
+{
+	margin-bottom: 10px;
+	
+}
+
+.features-icon img
+{
+	width:40px;
+	height: auto;
+}
+
+
+.features-box h1
+{
+	
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.features-box p
+{
+	color:#9e9e9e;
+	
+}
+
+	</style>
+	
+</div>	
+
+</footer>
+</body>
+</html>
+
